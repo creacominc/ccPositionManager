@@ -15,19 +15,24 @@ struct ccPositionManagerApp: App
     var sharedModelContainer: ModelContainer =
     {
         let schema = Schema([
-            Account.self,
+//            Account.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration( schema: schema, isStoredInMemoryOnly: false )
         
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
+        do
+        {
+            return try ModelContainer( for: schema, configurations: [modelConfiguration] )
+        }
+        catch
+        {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
-    var body: some Scene {
-        WindowGroup {
+
+    var body: some Scene
+    {
+        WindowGroup
+        {
             ContentView()
         }
         .modelContainer(sharedModelContainer)

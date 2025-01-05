@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		364D704C2D2A2EF700577390 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		3688183E2D17924500BA57F4 /* ccPositionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccPositionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		368818352D17924400BA57F4 = {
 			isa = PBXGroup;
 			children = (
+				364D704C2D2A2EF700577390 /* README.md */,
 				368818402D17924500BA57F4 /* ccPositionManager */,
 				368818542D17924600BA57F4 /* ccPositionManagerTests */,
 				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
