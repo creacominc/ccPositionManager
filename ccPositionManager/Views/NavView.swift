@@ -10,80 +10,32 @@ import SwiftData
 
 struct NavView: View
 {
-    @Query private var accounts: [Account]
+
+    @Query private var positions: [Position]
+    @Environment(\.modelContext) private var context
 
     var body: some View
     {
-        VStack
+        NavigationStack
         {
-            List
-            {
-//                ForEach( accounts )
-//                { account in
-//
-//                    ForEach( account.positions() )
-//                    { position in
-//                        Text( position.symbol() )
-//                    }
-//
-//                    NavigationLink
-//                    {
-//                        Text( "Item at \(account.accountNumber) " )
-//                    }
-//                label:
-//                    {
-//                        Text( account.accountNumber )
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-                
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            List( positions, id: \.m_symbol )
+            { position in
+                HStack {
+                    Text( position.m_symbol )
                 }
-#endif
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
             }
-//            .task {
-//                context.insert( Account( accountNumber: "AAPL" ) )
-//                context.insert( Account( accountNumber: "NVDA" ) )
-//                context.insert( Account( accountNumber: "RKLB" ) )
-//            }
-            
-            HStack
-            {
-                // buttons at bottom
-//                Picker("Workflow", selection: $workflowEnum)
-//                {
-//                    Text( "Sell" ).tag( WorkflowEnum.SellWF )
-//                    Text( "Buy" ).tag( WorkflowEnum.BuyWF )
-//                    Text( "Cntract" ).tag( WorkflowEnum.ContractWF )
-//                    Text( "Account" ).tag( WorkflowEnum.AccountWF )
-//                }
-                
+            .navigationTitle("Positions")
+            .task {
+                context.insert( Position( symbol: "AAPL" )  )
+                context.insert( Position( symbol: "CLOV" )  )
+                context.insert( Position( symbol: "RKLB" )  )
             }
-            
         }
-        
-        
-        
     }
-    
-    
-
-    
 }
 
 #Preview
 {
     NavView()
+        .modelContainer(for: Position.self, inMemory: true)
 }

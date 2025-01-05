@@ -9,10 +9,29 @@ import SwiftUI
 
 struct SecurityListView: View
 {
+    @State private var positions : [Position] = [
+        Position(symbol: "AAPL"),
+        Position(symbol: "MSFT"),
+        Position(symbol: "FB"),
+    ]
+
     var body: some View
     {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+        NavigationStack {
+
+            List {
+                ForEach(positions)
+                { position in
+                    Text(position.symbol())
+                }
+            }
+
+        }
+        .navigationTitle(Text("Positions"))
+
     }
+
 }
 
 #Preview

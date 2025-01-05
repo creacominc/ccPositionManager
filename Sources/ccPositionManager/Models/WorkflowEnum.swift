@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum WorkflowEnum: String, CaseIterable, Identifiable {
+enum WorkflowEnum: String, CaseIterable, Identifiable
+{
     var id: Self { self }
 
     case SellWF
