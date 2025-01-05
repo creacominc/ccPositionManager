@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		36DADAE72D2A37EE009C4E5D /* ccPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */; };
+		36DADAEB2D2A3805009C4E5D /* ccPositionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		368818522D17924600BA57F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -28,6 +33,8 @@
 		3688183E2D17924500BA57F4 /* ccPositionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccPositionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ccPositionManager.swift; sourceTree = "<group>"; };
+		36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ccPositionManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -36,14 +43,14 @@
 			path = ccPositionManager;
 			sourceTree = "<group>";
 		};
-		368818542D17924600BA57F4 /* ccPositionManagerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ccPositionManagerTests;
-			sourceTree = "<group>";
-		};
 		3688185E2D17924600BA57F4 /* ccPositionManagerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ccPositionManagerUITests;
+			sourceTree = "<group>";
+		};
+		36DADAF02D2A381D009C4E5D /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,9 +83,10 @@
 		368818352D17924400BA57F4 = {
 			isa = PBXGroup;
 			children = (
+				36DADAEA2D2A3805009C4E5D /* Tests */,
+				36DADAE62D2A37EE009C4E5D /* Sources */,
 				364D704C2D2A2EF700577390 /* README.md */,
 				368818402D17924500BA57F4 /* ccPositionManager */,
-				368818542D17924600BA57F4 /* ccPositionManagerTests */,
 				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
 				3688183F2D17924500BA57F4 /* Products */,
 			);
@@ -92,6 +100,39 @@
 				3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		36DADAE52D2A37EE009C4E5D /* ccPositionManager */ = {
+			isa = PBXGroup;
+			children = (
+				36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */,
+				36DADAF02D2A381D009C4E5D /* Models */,
+			);
+			path = ccPositionManager;
+			sourceTree = "<group>";
+		};
+		36DADAE62D2A37EE009C4E5D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				36DADAE52D2A37EE009C4E5D /* ccPositionManager */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		36DADAE92D2A3805009C4E5D /* ccPositionManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */,
+			);
+			path = ccPositionManagerTests;
+			sourceTree = "<group>";
+		};
+		36DADAEA2D2A3805009C4E5D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				36DADAE92D2A3805009C4E5D /* ccPositionManagerTests */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +152,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				368818402D17924500BA57F4 /* ccPositionManager */,
+				36DADAF02D2A381D009C4E5D /* Models */,
 			);
 			name = ccPositionManager;
 			packageProductDependencies = (
@@ -131,9 +173,6 @@
 			);
 			dependencies = (
 				368818532D17924600BA57F4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				368818542D17924600BA57F4 /* ccPositionManagerTests */,
 			);
 			name = ccPositionManagerTests;
 			packageProductDependencies = (
@@ -238,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DADAE72D2A37EE009C4E5D /* ccPositionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DADAEB2D2A3805009C4E5D /* ccPositionManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
