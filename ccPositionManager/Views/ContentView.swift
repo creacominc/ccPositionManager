@@ -70,8 +70,20 @@ struct ContentView: View {
 }
 
 #Preview {
-    
-    ContentView()
-        .modelContainer(for: Account.self, inMemory: true)
 
+    
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(
+        for: Position.self
+        , configurations: config)
+
+    for i in 1..<10 {
+        let position = Position(symbol: "Sym\(i)", averagePrice: Double(i) )
+        container.mainContext.insert( position )
+    }
+
+    return ContentView()
+        .modelContainer(container)
+
+    
 }

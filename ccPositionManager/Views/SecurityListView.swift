@@ -6,29 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SecurityListView: View
 {
-    @State private var positions : [Position] = [
-        Position(symbol: "AAPL"),
-        Position(symbol: "MSFT"),
-        Position(symbol: "FB"),
-    ]
+    @Query private var positions: [Position]
+    @Environment(\.modelContext) private var context
 
     var body: some View
     {
 
-        NavigationStack {
-
-            List {
-                ForEach(positions)
-                { position in
-                    Text(position.symbol())
-                }
+        List( positions )
+        { position in
+            HStack {
+                Text( position.symbol() )
             }
-
         }
-        .navigationTitle(Text("Positions"))
 
     }
 
@@ -36,5 +29,15 @@ struct SecurityListView: View
 
 #Preview
 {
-    SecurityListView()
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Position.self, configurations: config)
+
+    for i in 1..<8 {
+        let position = Position(symbol: "Sym\(i)", averagePrice: Double(i) )
+        container.mainContext.insert( position )
+    }
+
+    return SecurityListView()
+        .modelContainer(container)
+
 }

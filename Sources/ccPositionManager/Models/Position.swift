@@ -12,8 +12,8 @@ import SwiftData
 final class Position
 {
 
-     var m_symbol: String = ""
-//    private var m_averagePrice: Double = 0.0
+    private var m_symbol: String
+    private var m_averagePrice: Double = 0.0
 //    private var m_currentDayProfitLoss: Double = 0.0
 //    private var m_currentDayProfitLossPercentage: Double = 0.0
 //    private var m_longQuantity: Double = 0.0
@@ -24,7 +24,7 @@ final class Position
 
     init(
         symbol: String
-//        , averagePrice: Double
+        , averagePrice: Double
 //        , currentDayProfitLoss: Double
 //        , currentDayProfitLossPercentage: Double
 //        , longQuantity: Double
@@ -35,7 +35,7 @@ final class Position
     )
     {
         self.m_symbol = symbol
-//        self.m_averagePrice = averagePrice
+        self.m_averagePrice = averagePrice
 //        self.m_currentDayProfitLoss = currentDayProfitLoss
 //        self.m_currentDayProfitLossPercentage = currentDayProfitLossPercentage
 //        self.m_longQuantity = longQuantity
@@ -45,7 +45,7 @@ final class Position
 //        self.m_marketValue = marketValue
     }
 
-    func symbol() -> String
+    public func symbol() -> String
     {
         return m_symbol
     }

@@ -38,6 +38,11 @@ final class Account
 //        m_positionList
 //    }
 
+    func accountNumber() -> String
+    {
+        m_accountNumber
+    }
+
 }
 
 /**

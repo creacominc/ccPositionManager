@@ -11,9 +11,9 @@ enum WorkflowEnum: String, CaseIterable, Identifiable
 {
     var id: Self { self }
 
-    case SellWF
-    case BuyWF
-    case ContractWF
-    case AccountWF
+    case Sell
+    case Buy
+    case Cntr
+    case Rprt
 }
 

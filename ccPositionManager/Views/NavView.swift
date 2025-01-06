@@ -11,31 +11,37 @@ import SwiftData
 struct NavView: View
 {
 
-    @Query private var positions: [Position]
-    @Environment(\.modelContext) private var context
-
     var body: some View
     {
-        NavigationStack
+
+        VStack
         {
-            List( positions, id: \.m_symbol )
-            { position in
-                HStack {
-                    Text( position.m_symbol )
-                }
+
+            WorkflowButtonsView()
+
+            NavigationStack
+            {
+                SecurityListView()
             }
-            .navigationTitle("Positions")
-            .task {
-                context.insert( Position( symbol: "AAPL" )  )
-                context.insert( Position( symbol: "CLOV" )  )
-                context.insert( Position( symbol: "RKLB" )  )
-            }
+
         }
+
     }
+
 }
 
 #Preview
 {
-    NavView()
-        .modelContainer(for: Position.self, inMemory: true)
+
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Position.self, configurations: config)
+
+    for i in 1..<10 {
+        let position = Position(symbol: "Sym\(i)", averagePrice: Double(i) )
+        container.mainContext.insert( position )
+    }
+
+    return NavView()
+        .modelContainer(container)
+
 }
