@@ -15,7 +15,7 @@ struct WorkflowButtonsView: View
     @Environment(\.modelContext) private var context
 
     @State private var selectedWorkflow: String = ""
-    @State private var selectedAccountName: String = "Select Account"
+    @State private var selectedAccountName: String = ""
 
     var body: some View
     {
@@ -23,22 +23,27 @@ struct WorkflowButtonsView: View
         VStack
         {
 
-            Picker( "Workflow", selection: $selectedWorkflow )
+            Picker( "", selection: $selectedWorkflow )
             {
                 ForEach( WorkflowEnum.allCases )
                 { workflow in
-                    Text( workflow.rawValue )
+                    Text( workflow.rawValue ).tag( workflow.rawValue )
                 }
             }
             .pickerStyle( .segmented )
+            .onAppear { selectedWorkflow = WorkflowEnum.allCases.first?.rawValue ?? "Sell" }
 
-            Picker( "Account", selection: $selectedAccountName )
+            Picker( "", selection: $selectedAccountName )
             {
+                Text( "All" ).tag( "All" )
+
                 ForEach( accounts )
                 { account in
-                    Text( account.accountNumber() )
+                    Text( account.accountNumber() ).tag( account.accountNumber() )
                 }
             }
+            .pickerStyle( .menu )
+            .onAppear { selectedAccountName = "All" }
 
         }
 
