@@ -1,5 +1,5 @@
 //
-//  TestUI.swift
+//  SecretsTestView.swift
 //  ccPositionManager
 //
 //  Created by Harold Tomlinson on 2025-01-10.
@@ -7,18 +7,16 @@
 
 import SwiftUI
 
-struct TestUI: View
+struct SecretsTestView: View
 {
     @State private var secrets : Secrets = Secrets( AUTORIZE_WEB: "", clientId: "", redirectUrl: "" )
-    
-    var body: some View
-    {
+    var body: some View {
         VStack
         {
             TextField( "Authorize Web", text: $secrets.AUTORIZE_WEB )
             TextField( "Client Id", text: $secrets.clientId )
             TextField( "Redirect URL", text: $secrets.redirectUrl )
-
+            
             Button( "Save Secrets" )
             {
                 
@@ -39,7 +37,7 @@ struct TestUI: View
         {
             let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let fileURL = documentsDirectory.appendingPathComponent(".secrets.json")
-
+            
             let data = try? Data( contentsOf: fileURL )
             
             do {
@@ -49,14 +47,10 @@ struct TestUI: View
                 print("Error decoding JSON: \(error)")
             }
         }
-        
     }
 
-    
 }
 
-
-
 #Preview {
-    TestUI()
+    SecretsTestView()
 }
