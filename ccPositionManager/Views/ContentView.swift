@@ -7,12 +7,17 @@
 
 import SwiftUI
 import SwiftData
-
+//import Foundation
+//import AuthenticationServices
 
 struct ContentView: View {
     @Environment(\.modelContext) private var context
     @State private var workflowEnum = WorkflowEnum.allCases.first!
-
+    @State private var testButtonTitle: String = "Test"
+    @State private var testButtonEnabled: Bool = true
+    @State private var authenticateButtonEnabled: Bool = false
+    @State private var authenticateButtonTitle: String = "Authenticate on Web"
+    @State private var authenticateButtonUrl: URL = URL(string: "https://127.0.0.1")!
 
     var body: some View
     {
@@ -27,10 +32,34 @@ struct ContentView: View {
         {
 
             VStack {
-                Button("Test")
+                Button( testButtonTitle )
                 {
                     runTest()
+//                    let apiClient = APIClient()
+//                    testButtonTitle = "pressed"
+//                    apiClient.authenticate
+//                    { (result : Result< URL, APIError>) in
+//
+//                        switch result
+//                        {
+//                            case .success( let url ):
+//                                print( "authenticated" )
+//                                testButtonEnabled = false
+//                                authenticateButtonEnabled = true
+//                                authenticateButtonTitle = "Authenticated"
+//                                authenticateButtonUrl = url
+//                            case .failure(let error):
+//                                print("Authentication failed: \(error)")
+//                        }
+//
+//                    }
                 }
+                .disabled( !testButtonEnabled )
+
+
+                Link( authenticateButtonTitle, destination: authenticateButtonUrl )
+                    .disabled( !authenticateButtonEnabled )
+                    .opacity( !authenticateButtonEnabled ? 0 : 1 )
 
                 Text( "\($workflowEnum.id)" )
             }
@@ -43,20 +72,39 @@ struct ContentView: View {
     private func runTest()
     {
         print( "\n\n\n start test" )
-//        /** @TODO:  put secrets in the env file.  */
-//        let schwab = SchwabAPI(
-//            clientId: "TODO",
-//            clientSecret: "TODO",
-//            redirectURI: "https://127.0.0.1"
-//        )
+        /** @TODO:  put secrets in the env file.  */
+        @Environment(\.openURL) var openURL
+
+        let apiClient = APIClient()
+        testButtonTitle = "pressed"
+        apiClient.authenticate
+        { (result : Result< URL, APIError>) in
+
+            switch result
+            {
+                case .success( let url ):
+                    print( "authenticated" )
+                    testButtonEnabled = false
+                    authenticateButtonEnabled = true
+                    authenticateButtonTitle = "Authenticated"
+                    authenticateButtonUrl = url
+                    openURL( url )
+                case .failure(let error):
+                    print("Authentication failed: \(error)")
+            }
+
+        }
+        
+//        let apiClient = APIClient()
 //
-//        schwab.authenticate
-//        { result in
+//        apiClient.authenticate
+//        { (result : Result< URL, APIError>) in
 //
 //            switch result
 //            {
 //                case .success:
 //                    print("Authentication successful")
+//                print( )
 //                case .failure(let error):
 //                    print("Authentication failed: \(error)")
 //            }

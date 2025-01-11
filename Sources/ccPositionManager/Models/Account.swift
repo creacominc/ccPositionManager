@@ -11,13 +11,13 @@ import SwiftData
 @Model
 final class Account
 {
-    
+
     private var m_accountNumber: String
 //    private var m_positionList: [ Position ] = []
 //    private var m_initialBalances: Balance
 //    private var m_currentBalances: Balance
 //    private var m_projectedBalances: Balance
-    
+
     init(
         accountNumber: String
 //        , positionList: [Position]
@@ -32,7 +32,7 @@ final class Account
 //        self.m_currentBalances = currentBalances
 //        self.m_projectedBalances = projectedBalances
     }
-    
+
 //    func positions() -> [Position]
 //    {
 //        m_positionList
