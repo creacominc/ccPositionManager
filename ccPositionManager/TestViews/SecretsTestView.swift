@@ -9,11 +9,10 @@ import SwiftUI
 
 struct SecretsTestView: View
 {
-    @State private var secrets : Secrets = Secrets( AUTORIZE_WEB: "", clientId: "", redirectUrl: "" )
+    @State private var secrets : Secrets = Secrets( clientId: "", redirectUrl: "" )
     var body: some View {
         VStack
         {
-            TextField( "Authorize Web", text: $secrets.AUTORIZE_WEB )
             TextField( "Client Id", text: $secrets.clientId )
             TextField( "Redirect URL", text: $secrets.redirectUrl )
             

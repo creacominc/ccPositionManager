@@ -29,7 +29,7 @@ struct AuthorizeTestView: View
 
                 let apiClient = APIClient()
                 apiClient.authenticate
-                { (result : Result< URL, APIError>) in
+                { (result : Result< URL, ErrorCodes>) in
 
                     switch result
                     {
@@ -46,8 +46,9 @@ struct AuthorizeTestView: View
 
             }
 
-            TextField( "After authorization, paste URL here and hit <Enter>.", text: $resultantUrl
-                       , onCommit:
+            TextField( "After authorization, paste URL here.", text: $resultantUrl
+            )
+            .onChange( of: resultantUrl )
             {
                 print( "URL: \(self.resultantUrl)" )
 
@@ -58,8 +59,6 @@ struct AuthorizeTestView: View
                 extractedSession = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
 
             }
-
-            )
             Text( "Code: \(extractedCode)" )
             Text( "Session: \(extractedSession)")
 

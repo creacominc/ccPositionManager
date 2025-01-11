@@ -1,10 +1,11 @@
 
 import Foundation
 
-public enum APIError: Error {
-    case notAuthenticated
-    case networkError(Error)
+public enum ErrorCodes: Error
+{
     case decodingError
     case invalidResponse
+    case networkError(Error)
+    case notAuthenticated
     case rateLimitExceeded
 }

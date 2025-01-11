@@ -1,0 +1,40 @@
+
+QuoteRequest{
+description:
+Request one or more quote data in POST body
+
+cusips    [
+example: List [ 808524680, 594918104 ]
+List of cusip, max of 500 of symbols+cusip+ssids
+
+[...]]
+fields    string
+example: quote,reference
+comma separated list of nodes in each quote
+possible values are quote,fundamental,reference,extended,regular. Dont send this attribute for full response.
+
+ssids    [
+example: List [ 1516105793, 34621523 ]
+List of Schwab securityid[SSID], max of 500 of symbols+cusip+ssids
+
+integer($int64)
+maximum: 9999999999
+minimum: 1]
+symbols    [
+example: List [ "MRAD", "EATOF", "EBIZ", "AAPL", "BAC", "AAAHX", "AAAIX", "$DJI", "$SPX", "MVEN", "SOBS", "TOITF", "CNSWF", "AMZN 230317C01360000", "DJX 231215C00290000", "/ESH23", "./ADUF23C0.55", "AUD/CAD" ]
+List of symbols, max of 500 of symbols+cusip+ssids
+
+string]
+realtime    boolean
+example: true
+Get realtime quotes and skip entitlement check
+
+Enum:
+[ true, false ]
+indicative    boolean
+example: true
+Include indicative symbol quotes for all ETF symbols in request. If ETF symbol ABC is in request and indicative=true API will return quotes for ABC and its corresponding indicative quote for $ABC.IV
+
+Enum:
+[ true, false ]
+}

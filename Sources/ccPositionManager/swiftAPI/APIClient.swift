@@ -2,20 +2,14 @@
 import Foundation
 import AuthenticationServices
 
-let SCHWAB_OATH : String = "https://api.schwabapi.com/v1/oauth/token" // https://auth.schwab.com/oauth2/token"
-// https://api.schwabapi.com/marketdata/v1/quotes?symbols=mod%2Cmu&fields=quote%2Creference&indicative=false
-//
-let SCHWAB_ACCOUNT_URI : String = "https://api.schwabapi.com/trader/v1/accounts" // https://ausgateway.schwab.com/api/is.TradeOrderManagementWeb/v1/TradeOrderManagementWebPort/customer/accounts"
-let SCHWAB_POSITIONS_URI : String = "https://ausgateway.schwab.com/api/is.TradeOrderManagementWeb/v1/TradeOrderManagementWebPort/positions?accountId="
-
 class APIClient
 {
-    private var secrets: Secrets = Secrets( AUTORIZE_WEB: "" , clientId: "" , redirectUrl: "" )
+    private let AUTORIZE_WEB : String = "https://api.schwabapi.com/v1/oauth/authorize"
+    private var secrets: Secrets = Secrets( clientId: "" , redirectUrl: "" )
     private var accessToken: String = ""
 
     init()
     {
-
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(".secrets.json")
 
@@ -27,13 +21,12 @@ class APIClient
         } catch {
             print("Error decoding JSON: \(error)")
         }
-
     }
 
-    func authenticate(completion: @escaping (Result<URL, APIError>) -> Void)
+    func authenticate(completion: @escaping (Result<URL, ErrorCodes>) -> Void)
     {
         // provide the URL for authentication.
-        let AUTHORIZE_URL : String  = "\(self.secrets.AUTORIZE_WEB)?response_type=code&client_id=\(self.secrets.clientId)&scope=readonly&redirect_uri=\(self.secrets.redirectUrl)"
+        let AUTHORIZE_URL : String  = "\(self.AUTORIZE_WEB)?response_type=code&client_id=\(self.secrets.clientId)&scope=readonly&redirect_uri=\(self.secrets.redirectUrl)"
         guard let url = URL( string: AUTHORIZE_URL ) else {
             completion(.failure(.invalidResponse))
             return
@@ -42,37 +35,109 @@ class APIClient
         return
     }
 
-//        guard let url = URL(string: SCHWAB_OATH ) else {
-//            completion(.failure(.invalidResponse))
-//            return
-//        }
-//        
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//        
-//        let bodyParameters = [
-//            "grant_type": "client_credentials",
-//            "client_id": clientId,
-//            "client_secret": clientSecret,
-//            "redirect_uri": redirectURI
-//        ]
-//        request.httpBody = bodyParameters.map { "\($0.key)=\($0.value)" }.joined(separator: "&").data(using: .utf8)
-//        
-//        performRequest(request) { (result: Result<OAuthResponse, APIError>) in
-//            switch result {
-//            case .success(let oauthResponse):
-//                self.accessToken = oauthResponse.accessToken
-//                completion(.success(()))
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
 
 
-//    func fetchAccountData(completion: @escaping (Result<AccountData, APIError>) -> Void)
+    /**
+     QuoteRequest{
+     description:
+     Request one or more quote data in POST body
+
+     cusips    [
+     example: List [ 808524680, 594918104 ]
+     List of cusip, max of 500 of symbols+cusip+ssids
+
+     [...]]
+     fields    string
+     example: quote,reference
+     comma separated list of nodes in each quote
+     possible values are quote,fundamental,reference,extended,regular. Dont send this attribute for full response.
+
+     ssids    [
+     example: List [ 1516105793, 34621523 ]
+     List of Schwab securityid[SSID], max of 500 of symbols+cusip+ssids
+
+     integer($int64)
+     maximum: 9999999999
+     minimum: 1]
+     symbols    [
+     example: List [ "MRAD", "EATOF", "EBIZ", "AAPL", "BAC", "AAAHX", "AAAIX", "$DJI", "$SPX", "MVEN", "SOBS", "TOITF", "CNSWF", "AMZN 230317C01360000", "DJX 231215C00290000", "/ESH23", "./ADUF23C0.55", "AUD/CAD" ]
+     List of symbols, max of 500 of symbols+cusip+ssids
+
+     string]
+     realtime    boolean
+     example: true
+     Get realtime quotes and skip entitlement check
+
+     Enum:
+     [ true, false ]
+     indicative    boolean
+     example: true
+     Include indicative symbol quotes for all ETF symbols in request. If ETF symbol ABC is in request and indicative=true API will return quotes for ABC and its corresponding indicative quote for $ABC.IV
+
+     Enum:
+     [ true, false ]
+     }
+     */
+    func getQuotes(symbolId: String, completion: @escaping (Result<QuotesResponse, ErrorCodes>) -> Void)
+    {
+        /**
+         curl -X 'GET' \
+           'https://api.schwabapi.com/marketdata/v1/quotes?symbols=RY&indicative=false' \
+           -H 'accept: application/json' \
+           -H 'Authorization: Bearer I0.b2F1dGgyLmNkYy5zY2h3YWIuY29t.mYmRJoFgxpBZAPPWHcJpzmJH5wlW1DItYhe_mGtk5A0@'
+
+         https://api.schwabapi.com/marketdata/v1/quotes?symbols=RY&indicative=false
+
+         
+         */
+        let urlString : String = "https://api.schwabapi.com/v1/quotes/\(symbolId)"
+        guard let url = URL( string: urlString ) else {
+            completion( .failure( .invalidResponse ) )
+            return
+        }
+    }
+
+
+    // {symbol_id}/quotes
+    // chains (option chains)
+    // expirationchains
+    // pricehistory
+    // movers/{symbol_id}
+    // markets
+    // markets/{market_id}
+    // instruments
+    // instruments/{cusip_id}
+
+    // accounts/accountNumbers
+    // accounts
+    // accounts/{accountNumber}
+    // accounts/{accountNumber}/orders - get orders
+    // accounts/{accountNumber}/orders - place orders
+    // accounts/{accountNumber}/orders/{orderId} - get specific order info
+    // accounts/{accountNumber}/orders/{orderId} - cancel an order
+    // accounts/{accountNumber}/orders/{orderId} - replace an order
+    // orders - get all order
+    // accounts/{accountNumber}/previewOrder
+
+    // accounts/{accountNumber}/transactions
+    // accounts/{accountNumber}/transactions/{transactionId}
+
+    // userPreference
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+//    func fetchAccountData(completion: @escaping (Result<AccountData, ErrorCodes>) -> Void)
 //    {
-//
 //        guard let url = URL(string: "https://ausgateway.schwab.com/api/is.TradeOrderManagementWeb/v1/TradeOrderManagementWebPort/customer/accounts") else {
 //            completion(.failure(.invalidResponse))
 //            return
@@ -80,19 +145,19 @@ class APIClient
 //
 //        var request = URLRequest(url: url)
 //        request.httpMethod = "GET"
-//        if let accessToken = self.accessToken {
+//        if let accessToken = self.accessToken
+//        {
 //            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
 //        }
-//        else {
+//        else
+//        {
 //            completion(.failure(.notAuthenticated))
 //            return
 //        }
-//
 //        self.performRequest(request, completion: completion)
-//
 //    }
-//    
-//    func fetchPositions(accountId: String, completion: @escaping (Result<[PositionData], APIError>) -> Void)
+
+//    func fetchPositions(accountId: String, completion: @escaping (Result<[PositionData], ErrorCodes>) -> Void)
 //    {
 //        guard let url = URL(string: SCHWAB_POSITIONS_URI + accountId ) else {
 //            completion(.failure(.invalidResponse))
@@ -112,35 +177,36 @@ class APIClient
 //        self.performRequest(request, completion: completion)
 //    }
     
-    private func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, APIError>) -> Void)
-    {
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(.networkError(error)))
-                return
-            }
-            
-            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            do {
-                let decodedResponse = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(decodedResponse))
-            }
-            catch {
-                completion(.failure(.decodingError))
-            }
-        }.resume()
-    }
+//    private func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, ErrorCodes>) -> Void)
+//    {
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                completion(.failure(.networkError(error)))
+//                return
+//            }
+//            
+//            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+//                completion(.failure(.invalidResponse))
+//                return
+//            }
+//            
+//            do {
+//                let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+//                completion(.success(decodedResponse))
+//            }
+//            catch {
+//                completion(.failure(.decodingError))
+//            }
+//        }.resume()
+//    }
     
 }
 
-private struct OAuthResponse: Decodable {
-    let accessToken: String
-    
-    enum CodingKeys: String, CodingKey {
-        case accessToken = "access_token"
-    }
-}
+//private struct OAuthResponse: Decodable
+//{
+//    let accessToken: String
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case accessToken = "access_token"
+//    }
+//}

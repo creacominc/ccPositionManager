@@ -38,7 +38,7 @@ struct ContentView: View {
 //                    let apiClient = APIClient()
 //                    testButtonTitle = "pressed"
 //                    apiClient.authenticate
-//                    { (result : Result< URL, APIError>) in
+//                    { (result : Result< URL, ErrorCodes>) in
 //
 //                        switch result
 //                        {
@@ -78,7 +78,7 @@ struct ContentView: View {
         let apiClient = APIClient()
         testButtonTitle = "pressed"
         apiClient.authenticate
-        { (result : Result< URL, APIError>) in
+        { (result : Result< URL, ErrorCodes>) in
 
             switch result
             {
@@ -94,22 +94,6 @@ struct ContentView: View {
             }
 
         }
-        
-//        let apiClient = APIClient()
-//
-//        apiClient.authenticate
-//        { (result : Result< URL, APIError>) in
-//
-//            switch result
-//            {
-//                case .success:
-//                    print("Authentication successful")
-//                print( )
-//                case .failure(let error):
-//                    print("Authentication failed: \(error)")
-//            }
-//
-//        }
 
         print( "\n end test \n\n\n" )
 

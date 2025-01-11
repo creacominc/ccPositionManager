@@ -14,7 +14,9 @@ struct TestUI: View
     {
         VStack {
             SecretsTestView()
+                .padding()
             AuthorizeTestView()
+                .padding()
         }
         
     }
