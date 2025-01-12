@@ -1,5 +1,7 @@
 # ccPositionManager
 Position Manager App for OSX and IOS
+[![Swift](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml/badge.svg)](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml)
+
 
 See:  https://developer.apple.com/tutorials/develop-in-swift/save-data
 
@@ -25,4 +27,3 @@ Views:
 - Securities List View:  A list of the securities for the select workflow.  This list may be limited by the Needs Attention Only Toggle.  The securities can be clicked on to get the relevant information in the detail view.
 
 
-[![Swift](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml/badge.svg)](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml)
