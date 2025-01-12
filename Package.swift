@@ -24,7 +24,7 @@ let package = Package(
             name: "ccPositionManager"),
         .testTarget(
             name: "ccPositionManagerTests",
-            dependencies: ["ccPositionManager", "Testing"]
+            dependencies: ["ccPositionManager"]
         ),
     ],
     swiftLanguageVersions: [.v5]
