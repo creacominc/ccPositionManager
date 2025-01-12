@@ -40,6 +40,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		36402A962D3450C000D9A912 /* schwabAPI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = schwabAPI;
+			sourceTree = "<group>";
+		};
 		368818402D17924500BA57F4 /* ccPositionManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ccPositionManager;
@@ -58,11 +63,6 @@
 		36E3E0A32D3312D0002A2F8B /* Enums */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		36E9611E2D30046D0016DB60 /* swiftAPI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = swiftAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -117,8 +117,8 @@
 		36DADAE52D2A37EE009C4E5D /* ccPositionManager */ = {
 			isa = PBXGroup;
 			children = (
+				36402A962D3450C000D9A912 /* schwabAPI */,
 				36E3E0A32D3312D0002A2F8B /* Enums */,
-				36E9611E2D30046D0016DB60 /* swiftAPI */,
 				36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */,
 				36DADAF02D2A381D009C4E5D /* Models */,
 				36E3E0752D32DEEB002A2F8B /* Secrets.swift */,
@@ -166,10 +166,10 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				36402A962D3450C000D9A912 /* schwabAPI */,
 				368818402D17924500BA57F4 /* ccPositionManager */,
 				36DADAF02D2A381D009C4E5D /* Models */,
 				36E3E0A32D3312D0002A2F8B /* Enums */,
-				36E9611E2D30046D0016DB60 /* swiftAPI */,
 			);
 			name = ccPositionManager;
 			packageProductDependencies = (
