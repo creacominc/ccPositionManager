@@ -12,36 +12,20 @@ import SwiftData
 final class QuotesResponse
 {
 
-
-
-    private var m_fundamental: Fundamental
-    private var m_quote: Quote
-    private var m_reference: Reference
-    private var m_regular: Regular
-
-    var response =  {
-        "RY": {
-             "assetMainType": "EQUITY",
-             "assetSubType": "COE",
-             "quoteType": "NBBO",
-             "realtime": true,
-             "ssid": 910435964,
-             "symbol": "RY",
-             "extended": {
-                "askPrice": 0,
-                "askSize": 0,
-                "bidPrice": 0,
-                "bidSize": 0,
-                "lastPrice": 125,
-                "lastSize": 9,
-                "mark": 0,
-                "quoteTime": 1736499595000,
-                "totalVolume": 0,
-                "tradeTime": 1736235303000
-             },
-        }
+    init(m_symbol: SapiSymbol, m_fundamental: SapiFundamental, m_quote: SapiQuote, m_reference: SapiReference, m_regular: SapiRegularMarket)
+    {
+        self.m_symbol = m_symbol
+        self.m_fundamental = m_fundamental
+        self.m_quote = m_quote
+        self.m_reference = m_reference
+        self.m_regular = m_regular
     }
-    /**
- */
+
+    private var m_symbol: SapiSymbol
+    private var m_fundamental: SapiFundamental
+    private var m_quote: SapiQuote
+    private var m_reference: SapiReference
+    private var m_regular: SapiRegularMarket
+
 }
 

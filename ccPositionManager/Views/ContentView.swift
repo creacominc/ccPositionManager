@@ -12,12 +12,12 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var context
-    @State private var workflowEnum = WorkflowEnum.allCases.first!
-    @State private var testButtonTitle: String = "Test"
-    @State private var testButtonEnabled: Bool = true
-    @State private var authenticateButtonEnabled: Bool = false
-    @State private var authenticateButtonTitle: String = "Authenticate on Web"
-    @State private var authenticateButtonUrl: URL = URL(string: "https://127.0.0.1")!
+    @State private var workflowEnum : WorkflowEnum = WorkflowEnum.allCases.first!
+    @State private var testButtonTitle : String = "Test"
+    @State private var testButtonEnabled : Bool = true
+    @State private var authenticateButtonEnabled : Bool = false
+    @State private var authenticateButtonTitle : String = "Authenticate on Web"
+    @State private var authenticateButtonUrl : URL = URL(string: "https://127.0.0.1")!
 
     var body: some View
     {
@@ -61,7 +61,7 @@ struct ContentView: View {
                     .disabled( !authenticateButtonEnabled )
                     .opacity( !authenticateButtonEnabled ? 0 : 1 )
 
-                Text( "\($workflowEnum.id)" )
+                Text( "\($workflowEnum)" )
             }
 
         }

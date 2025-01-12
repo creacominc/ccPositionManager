@@ -22,16 +22,22 @@ struct WorkflowButtonsView: View
 
         VStack
         {
+            let pickerValues : [String] = WorkflowEnum.allCases.map(\.rawValue)
 
             Picker( "", selection: $selectedWorkflow )
             {
-                ForEach( WorkflowEnum.allCases )
-                { workflow in
-                    Text( workflow.rawValue ).tag( workflow.rawValue )
-                }
+
+                Text( WorkflowEnum.allCases[ 0 ].rawValue ).tag( WorkflowEnum.allCases[ 0 ].rawValue )
+                Text( WorkflowEnum.allCases[ 1 ].rawValue ).tag( WorkflowEnum.allCases[ 1 ].rawValue )
+                Text( WorkflowEnum.allCases[ 2 ].rawValue ).tag( WorkflowEnum.allCases[ 2 ].rawValue )
+                Text( WorkflowEnum.allCases[ 3 ].rawValue ).tag( WorkflowEnum.allCases[ 3 ].rawValue )
+
             }
             .pickerStyle( .segmented )
             .onAppear { selectedWorkflow = WorkflowEnum.allCases.first?.rawValue ?? "Sell" }
+            .onAppear {             print( WorkflowEnum.allCases ) }
+            .onAppear { print( pickerValues ) }
+            .onAppear { print( pickerValues.indices ) }
 
             Picker( "", selection: $selectedAccountName )
             {

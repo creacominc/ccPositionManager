@@ -9,10 +9,10 @@ import Foundation
 import SwiftData
 
 @Model
-final class Quote
+final class SapiQuote
 {
 
-    init(m_52WeekHigh: Float, m_52WeekLow: Float, m_askMICId: String, m_askPrice: Int, m_askSize: Int, m_askTime: Int, m_bidMICId: String, m_bidPrice: Float, m_bidSize: Int, m_bidTime: Int, m_closePrice: Float, m_highPrice: Float, m_lastMICId: String, m_lastPrice: Float, m_lastSize: Int, m_lowPrice: Float, m_mark: Float, m_markChange: Float, m_markPercentChange: Float, m_netChange: Float, m_netPercentChange: Float, m_openPrice: Int, m_postMarketChange: Float, m_postMarketPercentChange: Float, m_quoteTime: Int, m_securityStatus: String, m_totalVolume: Int, m_tradeTime: Int)
+    init(m_52WeekHigh: Double, m_52WeekLow: Double, m_askMICId: String, m_askPrice: Double, m_askSize: Int, m_askTime: Int, m_bidMICId: String, m_bidPrice: Double, m_bidSize: Int, m_bidTime: Int, m_closePrice: Double, m_highPrice: Double, m_lastMICId: String, m_lastPrice: Double, m_lastSize: Int, m_lowPrice: Double, m_mark: Double, m_markChange: Double, m_markPercentChange: Double, m_netChange: Double, m_netPercentChange: Double, m_openPrice: Double, m_postMarketChange: Double, m_postMarketPercentChange: Double, m_quoteTime: Int, m_securityStatus: String, m_totalVolume: Int, m_tradeTime: Int, m_volatility: Double)
     {
         self.m_52WeekHigh = m_52WeekHigh
         self.m_52WeekLow = m_52WeekLow
@@ -42,36 +42,38 @@ final class Quote
         self.m_securityStatus = m_securityStatus
         self.m_totalVolume = m_totalVolume
         self.m_tradeTime = m_tradeTime
+        self.m_volatility = m_volatility
     }
 
-    private var m_52WeekHigh: Float = 0.0
-    private var m_52WeekLow: Float = 0.0
+    private var m_52WeekHigh: Double = 0.0
+    private var m_52WeekLow: Double = 0.0
     private var m_askMICId: String = ""
-    private var m_askPrice: Int = 0
+    private var m_askPrice: Double = 0.0
     private var m_askSize: Int = 0
     private var m_askTime: Int = 0
     private var m_bidMICId: String = ""
-    private var m_bidPrice: Float = 0.0
+    private var m_bidPrice: Double = 0.0
     private var m_bidSize: Int = 0
     private var m_bidTime: Int = 0
-    private var m_closePrice: Float = 0.0
-    private var m_highPrice: Float = 0.0
+    private var m_closePrice: Double = 0.0
+    private var m_highPrice: Double = 0.0
     private var m_lastMICId: String = ""
-    private var m_lastPrice: Float = 0.0
+    private var m_lastPrice: Double = 0.0
     private var m_lastSize: Int = 0
-    private var m_lowPrice: Float = 0.0
-    private var m_mark: Float = 0.0
-    private var m_markChange: Float = 0.0
-    private var m_markPercentChange: Float = 0.0
-    private var m_netChange: Float = 0.0
-    private var m_netPercentChange: Float = 0.0
-    private var m_openPrice: Int = 0
-    private var m_postMarketChange: Float = 0.0
-    private var m_postMarketPercentChange: Float = 0.0
+    private var m_lowPrice: Double = 0.0
+    private var m_mark: Double = 0.0
+    private var m_markChange: Double = 0.0
+    private var m_markPercentChange: Double = 0.0
+    private var m_netChange: Double = 0.0
+    private var m_netPercentChange: Double = 0.0
+    private var m_openPrice: Double = 0.0
+    private var m_postMarketChange: Double = 0.0
+    private var m_postMarketPercentChange: Double = 0.0
     private var m_quoteTime: Int = 0
     private var m_securityStatus: String = ""
     private var m_totalVolume: Int = 0
     private var m_tradeTime: Int = 0
+    private var m_volatility: Double = 0.0
 }
 
 

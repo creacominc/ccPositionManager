@@ -11,10 +11,10 @@ import SwiftData
 
 
 @Model
-final class Fundamental
+final class SapiFundamental
 {
 
-    init(m_avg10DaysVolume: Int, m_avg1YearVolume: Int, m_declarationDate: Date, m_divAmount: Float, m_divExDate: Date, m_divFreq: Int, m_divPayAmount: Float, m_divPayDate: Date, m_divYield: Float, m_eps: Float, m_fundLeverageFactor: Int, m_lastEarningsDate: Date, m_nextDivExDate: Date, m_nextDivPayDate: Date, m_peRatio: Float)
+    init(m_avg10DaysVolume: Double, m_avg1YearVolume: Double, m_declarationDate: Date, m_divAmount: Double, m_divExDate: Date, m_divFreq: Int, m_divPayAmount: Double, m_divPayDate: Date, m_divYield: Double, m_eps: Double, m_fundLeverageFactor: Double, m_lastEarningsDate: Date, m_nextDivExDate: Date, m_nextDivPayDate: Date, m_peRatio: Double)
     {
         self.m_avg10DaysVolume = m_avg10DaysVolume
         self.m_avg1YearVolume = m_avg1YearVolume
@@ -33,21 +33,24 @@ final class Fundamental
         self.m_peRatio = m_peRatio
     }
 
-    private var m_avg10DaysVolume: Int = 0
-    private var m_avg1YearVolume: Int = 0
+    private var m_avg10DaysVolume: Double = 0.0
+    private var m_avg1YearVolume: Double = 0.0
     private var m_declarationDate: Date = Date.now
-    private var m_divAmount: Float = 0.0
+    private var m_divAmount: Double = 0.0
     private var m_divExDate: Date = Date.now
+    /**
+     Dividend frequency 1 – once a year or annually 2 – 2x a year or semi-annualy 3 - 3x a year (ex. ARCO, EBRPF) 4 – 4x a year or quarterly 6 - 6x per yr or every other month 11 – 11x a year (ex. FBND, FCOR) 12 – 12x a year or monthly
+     */
     private var m_divFreq: Int = 0
-    private var m_divPayAmount: Float = 0.0
+    private var m_divPayAmount: Double = 0.0
     private var m_divPayDate: Date = Date.now
-    private var m_divYield: Float = 0.0
-    private var m_eps: Float = 0.0
-    private var m_fundLeverageFactor: Int = 0
+    private var m_divYield: Double = 0.0
+    private var m_eps: Double = 0.0
+    private var m_fundLeverageFactor: Double = 0.0
     private var m_lastEarningsDate: Date = Date.now
     private var m_nextDivExDate: Date = Date.now
     private var m_nextDivPayDate: Date = Date.now
-    private var m_peRatio: Float = 0.0
+    private var m_peRatio: Double = 0.0
 
 }
 

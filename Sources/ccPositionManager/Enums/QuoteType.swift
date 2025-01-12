@@ -7,13 +7,10 @@
 
 import Foundation
 
-public enum WorkflowEnum: String, Codable, CaseIterable
+public enum QuoteType: String, Codable, CaseIterable
 {
 
-    case Sell
-    case Buy
-    case Cntr
-    case Rprt
+    case NBBO
+    case NFL
 
 }
-
