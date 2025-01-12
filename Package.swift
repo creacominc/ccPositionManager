@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "ccPositionManager",
     platforms: [
-        .macOS(.v14),
+        .macOS(.v15),
+        .iOS(.v18), 
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -14,6 +15,9 @@ let package = Package(
             name: "ccPositionManager",
             targets: ["ccPositionManager"]),
     ],
+    // dependencies: [
+    //     .package(name: "Testing", url: "https://github.com/your-repo/Testing.git", from: "1.0.0")
+    // ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
@@ -21,10 +25,9 @@ let package = Package(
             name: "ccPositionManager"),
         .testTarget(
             name: "ccPositionManagerTests",
-            dependencies: ["ccPositionManager"]
+            dependencies: ["ccPositionManager", "Testing"]
         ),
     ],
     swiftLanguageVersions: [.v5]
 
 )
-

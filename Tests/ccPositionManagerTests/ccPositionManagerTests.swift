@@ -5,6 +5,7 @@
 //  Created by Harold Tomlinson on 2024-12-21.
 //
 
+import Foundation
 import Testing
 @testable import ccPositionManager
 
