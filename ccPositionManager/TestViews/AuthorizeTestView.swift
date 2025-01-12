@@ -27,7 +27,7 @@ struct AuthorizeTestView: View
             .onAppear
             {
 
-                let apiClient = APIClient()
+                let apiClient = SchwabClient()
                 apiClient.authenticate
                 { (result : Result< URL, ErrorCodes>) in
 

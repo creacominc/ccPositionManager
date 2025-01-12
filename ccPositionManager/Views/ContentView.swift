@@ -75,7 +75,7 @@ struct ContentView: View {
         /** @TODO:  put secrets in the env file.  */
         @Environment(\.openURL) var openURL
 
-        let apiClient = APIClient()
+        let apiClient = SchwabClient()
         testButtonTitle = "pressed"
         apiClient.authenticate
         { (result : Result< URL, ErrorCodes>) in
