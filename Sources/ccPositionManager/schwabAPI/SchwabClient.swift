@@ -7,12 +7,11 @@ class SchwabClient
     private let AUTORIZE_WEB : String = "https://api.schwabapi.com/v1/oauth/authorize"
     private var secrets: Secrets = Secrets( clientId: "" , redirectUrl: "" )
     private var accessToken: String = ""
-    private var code: String = ""
     private var session: String = ""
 
-    init( code: String, session: String )
+    init( accessToken: String, session: String )
     {
-        self.code = code
+        self.accessToken = accessToken
         self.session = session
 
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -29,9 +28,9 @@ class SchwabClient
     }
 
 
-    func setCode(code: String)
+    func setAccessToken(accessToken: String)
     {
-        self.code = code
+        self.accessToken = accessToken
     }
 
     func setSession(session: String)
@@ -39,9 +38,9 @@ class SchwabClient
         self.session = session
     }
 
-    func getCode() -> String
+    func getAccessToken() -> String
     {
-        return self.code
+        return self.accessToken
     }
 
     func getSession() -> String
@@ -65,6 +64,9 @@ class SchwabClient
 
 
     /**
+
+
+
      QuoteRequest{
      description:
      Request one or more quote data in POST body
@@ -113,9 +115,10 @@ class SchwabClient
            -H 'accept: application/json' \
            -H 'Authorization: Bearer I0.b2F1dGgyLmNkYy5zY2h3YWIuY29t.mYmRJoFgxpBZAPPWHcJpzmJH5wlW1DItYhe_mGtk5A0@'
 
-         https://api.schwabapi.com/marketdata/v1/quotes?symbols=RY&indicative=false
+         https://api.schwabapi.com/marketdata/v1/quotes?symbols=AAPL&indicative=false
+         https://api.schwabapi.com/marketdata/v1/quotes?symbols=NVDA&indicative=false
          */
-        let urlString : String = "https://api.schwabapi.com/v1/quotes/\(symbolId)"
+        let urlString : String = "https://api.schwabapi.com/marketdata/v1/quotes?symbols=\(symbolId)&indicative=false"
         guard let url = URL( string: urlString ) else {
             completion( .failure( .invalidResponse ) )
             return
@@ -124,17 +127,13 @@ class SchwabClient
 
 
         var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        if let accessToken = self.accessToken {
-//            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-//        }
-//        else {
-//            completion(.failure(.notAuthenticated))
-//            return
-//        }
-//
-//        self.performRequest(request, completion: completion)
-//
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue( "application/json", forHTTPHeaderField: "accept" )
+
+        print( "Bearer \(self.accessToken)" )
+
+        self.performRequest(request, completion: completion)
 
     }
 
@@ -220,22 +219,31 @@ class SchwabClient
     
     private func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, ErrorCodes>) -> Void)
     {
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
+        URLSession.shared.dataTask(with: request)
+        { data, response, error in
+
+            print( "\n\n RESPONSE:  \(response.debugDescription) \n\n" )
+
+            if let error = error
+            {
                 completion(.failure(.networkError(error)))
                 return
             }
             
-            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode)
+            else
+            {
                 completion(.failure(.invalidResponse))
                 return
             }
             
-            do {
+            do
+            {
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedResponse))
             }
-            catch {
+            catch
+            {
                 completion(.failure(.decodingError))
             }
         }.resume()

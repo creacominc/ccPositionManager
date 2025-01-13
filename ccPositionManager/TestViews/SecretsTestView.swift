@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SecretsTestView: View
 {
-    private var schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
+    private var schwabClient : SchwabClient = SchwabClient( accessToken: "", session: "" )
 
     @State private var secrets : Secrets = Secrets( clientId: "", redirectUrl: "" )
 
@@ -61,6 +61,6 @@ struct SecretsTestView: View
 
 #Preview
 {
-    let schwabClient = SchwabClient( code: "", session: "" )
+    let schwabClient = SchwabClient( accessToken: "", session: "" )
     SecretsTestView( schwabClient : schwabClient )
 }

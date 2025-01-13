@@ -8,23 +8,24 @@
 import Foundation
 import SwiftData
 
-@Model
-public class SapiExtendedMarket
+//@Model
+//public class SapiExtendedMarket
+public struct SapiExtendedMarket : Decodable
 {
 
-    init(m_askPrice: Double, m_askSize: Int, m_bidPrice: Double, m_bidSize: Int, m_lastPrice: Double, m_lastSize: Int, m_mark: Double, m_quoteTime: Int, m_totalVolume: Int, m_tradeTime: Int)
-    {
-        self.m_askPrice = m_askPrice
-        self.m_askSize = m_askSize
-        self.m_bidPrice = m_bidPrice
-        self.m_bidSize = m_bidSize
-        self.m_lastPrice = m_lastPrice
-        self.m_lastSize = m_lastSize
-        self.m_mark = m_mark
-        self.m_quoteTime = m_quoteTime
-        self.m_totalVolume = m_totalVolume
-        self.m_tradeTime = m_tradeTime
-    }
+//    init(m_askPrice: Double, m_askSize: Int, m_bidPrice: Double, m_bidSize: Int, m_lastPrice: Double, m_lastSize: Int, m_mark: Double, m_quoteTime: Int, m_totalVolume: Int, m_tradeTime: Int)
+//    {
+//        self.m_askPrice = m_askPrice
+//        self.m_askSize = m_askSize
+//        self.m_bidPrice = m_bidPrice
+//        self.m_bidSize = m_bidSize
+//        self.m_lastPrice = m_lastPrice
+//        self.m_lastSize = m_lastSize
+//        self.m_mark = m_mark
+//        self.m_quoteTime = m_quoteTime
+//        self.m_totalVolume = m_totalVolume
+//        self.m_tradeTime = m_tradeTime
+//    }
 
     private var m_askPrice: Double = 0.0
     private var m_askSize: Int = 0

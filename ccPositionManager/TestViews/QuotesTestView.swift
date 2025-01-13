@@ -36,10 +36,10 @@ struct QuotesTestView: View
             { result in
                 if case .success(let quotes) = result
                 {
-                    print("Quotes: \(quotes)")
+                    print("\n\nQuotes: \(quotes)\n")
                 }
                 else {
-                    print("Error: \(result)")
+                    print("\n\nError: \(result)\n")
                 }
             }
             )
@@ -56,8 +56,9 @@ struct QuotesTestView: View
 #Preview
 {
     var schwabClient = SchwabClient(
-        code: "",
+        accessToken: "",
         session: ""
     )
     QuotesTestView( schwabClient : schwabClient )
 }
+

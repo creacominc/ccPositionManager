@@ -10,28 +10,29 @@ import SwiftData
 
 
 
-@Model
-final class SapiFundamental
+//@Model
+//public class SapiFundamental
+public struct SapiFundamental : Decodable
 {
 
-    init(m_avg10DaysVolume: Double, m_avg1YearVolume: Double, m_declarationDate: Date, m_divAmount: Double, m_divExDate: Date, m_divFreq: Int, m_divPayAmount: Double, m_divPayDate: Date, m_divYield: Double, m_eps: Double, m_fundLeverageFactor: Double, m_lastEarningsDate: Date, m_nextDivExDate: Date, m_nextDivPayDate: Date, m_peRatio: Double)
-    {
-        self.m_avg10DaysVolume = m_avg10DaysVolume
-        self.m_avg1YearVolume = m_avg1YearVolume
-        self.m_declarationDate = m_declarationDate
-        self.m_divAmount = m_divAmount
-        self.m_divExDate = m_divExDate
-        self.m_divFreq = m_divFreq
-        self.m_divPayAmount = m_divPayAmount
-        self.m_divPayDate = m_divPayDate
-        self.m_divYield = m_divYield
-        self.m_eps = m_eps
-        self.m_fundLeverageFactor = m_fundLeverageFactor
-        self.m_lastEarningsDate = m_lastEarningsDate
-        self.m_nextDivExDate = m_nextDivExDate
-        self.m_nextDivPayDate = m_nextDivPayDate
-        self.m_peRatio = m_peRatio
-    }
+//    init(m_avg10DaysVolume: Double, m_avg1YearVolume: Double, m_declarationDate: Date, m_divAmount: Double, m_divExDate: Date, m_divFreq: Int, m_divPayAmount: Double, m_divPayDate: Date, m_divYield: Double, m_eps: Double, m_fundLeverageFactor: Double, m_lastEarningsDate: Date, m_nextDivExDate: Date, m_nextDivPayDate: Date, m_peRatio: Double)
+//    {
+//        self.m_avg10DaysVolume = m_avg10DaysVolume
+//        self.m_avg1YearVolume = m_avg1YearVolume
+//        self.m_declarationDate = m_declarationDate
+//        self.m_divAmount = m_divAmount
+//        self.m_divExDate = m_divExDate
+//        self.m_divFreq = m_divFreq
+//        self.m_divPayAmount = m_divPayAmount
+//        self.m_divPayDate = m_divPayDate
+//        self.m_divYield = m_divYield
+//        self.m_eps = m_eps
+//        self.m_fundLeverageFactor = m_fundLeverageFactor
+//        self.m_lastEarningsDate = m_lastEarningsDate
+//        self.m_nextDivExDate = m_nextDivExDate
+//        self.m_nextDivPayDate = m_nextDivPayDate
+//        self.m_peRatio = m_peRatio
+//    }
 
     private var m_avg10DaysVolume: Double = 0.0
     private var m_avg1YearVolume: Double = 0.0

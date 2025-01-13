@@ -12,7 +12,7 @@ import SwiftData
 struct ccPositionManagerApp: App
 {
 
-    private var schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
+    private var schwabClient : SchwabClient = SchwabClient( accessToken: "", session: "" )
 
 
 

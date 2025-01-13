@@ -111,7 +111,7 @@ struct ContentView: View
 
 #Preview
 {
-    let schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
+    let schwabClient : SchwabClient = SchwabClient( accessToken: "", session: "" )
 
     let positionConfig = ModelConfiguration(isStoredInMemoryOnly: true)
     let accountConfig = ModelConfiguration(isStoredInMemoryOnly: true)

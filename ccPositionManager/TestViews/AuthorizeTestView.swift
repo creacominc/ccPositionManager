@@ -15,7 +15,7 @@ struct AuthorizeTestView: View
     @State private var authenticateButtonUrl: URL = URL( string: "https://localhost" )!
     @State private var authenticateButtonEnabled: Bool = false
     @State private var authenticateButtonTitle: String = "Click to Authorize"
-    @State private var extractedCode: String = ""
+    @State private var extractedAccessToken: String = ""
     @State private var extractedSession: String = ""
 
     init( schwabClient: SchwabClient )
@@ -60,15 +60,15 @@ struct AuthorizeTestView: View
                 let urlComponents = URLComponents(string: self.resultantUrl)!
                 let queryItems = urlComponents.queryItems
                 
-                extractedCode = queryItems?.first(where: { $0.name == "code" })?.value ?? ""
+                extractedAccessToken = queryItems?.first(where: { $0.name == "code" })?.value ?? ""
                 extractedSession = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
 
-                self.schwabClient.setCode( code: extractedCode )
+                self.schwabClient.setAccessToken( accessToken: extractedAccessToken )
                 self.schwabClient.setSession( session: extractedSession )
-                print( "code: \(extractedCode)" )
+                print( "accessToken: \(extractedAccessToken)" )
                 print( "session: \(extractedSession)" )
             }
-            Text( "Code: \(extractedCode)" )
+            Text( "Access Token: \(extractedAccessToken)" )
             Text( "Session: \(extractedSession)")
 
         }
@@ -78,6 +78,6 @@ struct AuthorizeTestView: View
 
 #Preview
 {
-    let schwabClient = SchwabClient( code: "", session: "" )
+    let schwabClient = SchwabClient( accessToken: "", session: "" )
     AuthorizeTestView( schwabClient : schwabClient )
 }
