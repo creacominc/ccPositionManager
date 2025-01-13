@@ -9,13 +9,21 @@ import SwiftUI
 
 struct TestUI: View
 {
-    
+    private var schwabClient: SchwabClient
+
+    init( schwabClient: SchwabClient )
+    {
+        self.schwabClient = schwabClient
+    }
+
     var body: some View
     {
         VStack {
-            SecretsTestView()
+            SecretsTestView( schwabClient: schwabClient )
                 .padding()
-            AuthorizeTestView()
+            AuthorizeTestView( schwabClient: schwabClient )
+                .padding()
+            QuotesTestView( schwabClient: schwabClient )
                 .padding()
         }
         
@@ -26,7 +34,9 @@ struct TestUI: View
 
 
 
-#Preview {
-    TestUI()
+#Preview
+{
+    let schwabClient = SchwabClient( code: "", session: "" )
+    TestUI( schwabClient : schwabClient )
 }
 

@@ -9,12 +9,19 @@ import SwiftUI
 
 struct AuthorizeTestView: View
 {
+    private var schwabClient: SchwabClient
+
     @State private var resultantUrl: String = ""
     @State private var authenticateButtonUrl: URL = URL( string: "https://localhost" )!
     @State private var authenticateButtonEnabled: Bool = false
     @State private var authenticateButtonTitle: String = "Click to Authorize"
     @State private var extractedCode: String = ""
     @State private var extractedSession: String = ""
+
+    init( schwabClient: SchwabClient )
+    {
+        self.schwabClient = schwabClient
+    }
 
     var body: some View
     {
@@ -26,9 +33,7 @@ struct AuthorizeTestView: View
             .opacity( !authenticateButtonEnabled ? 0 : 1 )
             .onAppear
             {
-
-                let apiClient = SchwabClient()
-                apiClient.authenticate
+                schwabClient.authenticate
                 { (result : Result< URL, ErrorCodes>) in
 
                     switch result
@@ -58,6 +63,10 @@ struct AuthorizeTestView: View
                 extractedCode = queryItems?.first(where: { $0.name == "code" })?.value ?? ""
                 extractedSession = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
 
+                self.schwabClient.setCode( code: extractedCode )
+                self.schwabClient.setSession( session: extractedSession )
+                print( "code: \(extractedCode)" )
+                print( "session: \(extractedSession)" )
             }
             Text( "Code: \(extractedCode)" )
             Text( "Session: \(extractedSession)")
@@ -69,5 +78,6 @@ struct AuthorizeTestView: View
 
 #Preview
 {
-    AuthorizeTestView()
+    let schwabClient = SchwabClient( code: "", session: "" )
+    AuthorizeTestView( schwabClient : schwabClient )
 }

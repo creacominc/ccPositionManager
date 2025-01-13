@@ -11,7 +11,11 @@ import SwiftData
 @main
 struct ccPositionManagerApp: App
 {
-    
+
+    private var schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
+
+
+
     //    var sharedModelContainer: ModelContainer =
     //    {
     //        let schema = Schema([
@@ -42,7 +46,7 @@ struct ccPositionManagerApp: App
     {
         WindowGroup
         {
-            ContentView()
+            ContentView( schwabClient: schwabClient )
         }
         .modelContainer( for: Position.self )
     }

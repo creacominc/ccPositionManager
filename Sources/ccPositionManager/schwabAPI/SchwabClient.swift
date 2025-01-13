@@ -7,9 +7,14 @@ class SchwabClient
     private let AUTORIZE_WEB : String = "https://api.schwabapi.com/v1/oauth/authorize"
     private var secrets: Secrets = Secrets( clientId: "" , redirectUrl: "" )
     private var accessToken: String = ""
+    private var code: String = ""
+    private var session: String = ""
 
-    init()
+    init( code: String, session: String )
     {
+        self.code = code
+        self.session = session
+
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(".secrets.json")
 
@@ -22,6 +27,28 @@ class SchwabClient
             print("Error decoding JSON: \(error)")
         }
     }
+
+
+    func setCode(code: String)
+    {
+        self.code = code
+    }
+
+    func setSession(session: String)
+    {
+        self.session = session
+    }
+
+    func getCode() -> String
+    {
+        return self.code
+    }
+
+    func getSession() -> String
+    {
+        return self.session
+    }
+
 
     func authenticate(completion: @escaping (Result<URL, ErrorCodes>) -> Void)
     {
@@ -87,14 +114,28 @@ class SchwabClient
            -H 'Authorization: Bearer I0.b2F1dGgyLmNkYy5zY2h3YWIuY29t.mYmRJoFgxpBZAPPWHcJpzmJH5wlW1DItYhe_mGtk5A0@'
 
          https://api.schwabapi.com/marketdata/v1/quotes?symbols=RY&indicative=false
-
-         
          */
         let urlString : String = "https://api.schwabapi.com/v1/quotes/\(symbolId)"
         guard let url = URL( string: urlString ) else {
             completion( .failure( .invalidResponse ) )
             return
         }
+        print( url )
+
+
+        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//        if let accessToken = self.accessToken {
+//            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+//        }
+//        else {
+//            completion(.failure(.notAuthenticated))
+//            return
+//        }
+//
+//        self.performRequest(request, completion: completion)
+//
+
     }
 
 
@@ -177,28 +218,28 @@ class SchwabClient
 //        self.performRequest(request, completion: completion)
 //    }
     
-//    private func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, ErrorCodes>) -> Void)
-//    {
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            if let error = error {
-//                completion(.failure(.networkError(error)))
-//                return
-//            }
-//            
-//            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-//                completion(.failure(.invalidResponse))
-//                return
-//            }
-//            
-//            do {
-//                let decodedResponse = try JSONDecoder().decode(T.self, from: data)
-//                completion(.success(decodedResponse))
-//            }
-//            catch {
-//                completion(.failure(.decodingError))
-//            }
-//        }.resume()
-//    }
+    private func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, ErrorCodes>) -> Void)
+    {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+            
+            guard let data = data, let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            do {
+                let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+                completion(.success(decodedResponse))
+            }
+            catch {
+                completion(.failure(.decodingError))
+            }
+        }.resume()
+    }
     
 }
 

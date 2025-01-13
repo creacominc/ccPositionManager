@@ -10,14 +10,23 @@ import SwiftData
 //import Foundation
 //import AuthenticationServices
 
-struct ContentView: View {
+struct ContentView: View
+{
+    private var schwabClient : SchwabClient
+
     @Environment(\.modelContext) private var context
+
     @State private var workflowEnum : WorkflowEnum = WorkflowEnum.allCases.first!
     @State private var testButtonTitle : String = "Test"
     @State private var testButtonEnabled : Bool = true
     @State private var authenticateButtonEnabled : Bool = false
     @State private var authenticateButtonTitle : String = "Authenticate on Web"
     @State private var authenticateButtonUrl : URL = URL(string: "https://127.0.0.1")!
+
+    init( schwabClient: SchwabClient )
+    {
+        self.schwabClient = schwabClient
+    }
 
     var body: some View
     {
@@ -35,9 +44,9 @@ struct ContentView: View {
                 Button( testButtonTitle )
                 {
                     runTest()
-//                    let apiClient = APIClient()
+//                    let schwabClient = SchwabClient()
 //                    testButtonTitle = "pressed"
-//                    apiClient.authenticate
+//                    schwabClient.authenticate
 //                    { (result : Result< URL, ErrorCodes>) in
 //
 //                        switch result
@@ -75,9 +84,8 @@ struct ContentView: View {
         /** @TODO:  put secrets in the env file.  */
         @Environment(\.openURL) var openURL
 
-        let apiClient = SchwabClient()
         testButtonTitle = "pressed"
-        apiClient.authenticate
+        schwabClient.authenticate
         { (result : Result< URL, ErrorCodes>) in
 
             switch result
@@ -101,11 +109,14 @@ struct ContentView: View {
     
 }
 
-#Preview {
+#Preview
+{
+    let schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
 
     let positionConfig = ModelConfiguration(isStoredInMemoryOnly: true)
     let accountConfig = ModelConfiguration(isStoredInMemoryOnly: true)
     var container : ModelContainer
+
     do
     {
         container = try ModelContainer(
@@ -125,8 +136,8 @@ struct ContentView: View {
         let account = Account(accountNumber: "100\(i)")
         container.mainContext.insert( account )
     }
-    
-    return ContentView()
-        .modelContainer(container)
+
+    return ContentView( schwabClient : schwabClient )
+        .modelContainer( container )
 
 }

@@ -9,8 +9,17 @@ import SwiftUI
 
 struct SecretsTestView: View
 {
+    private var schwabClient : SchwabClient = SchwabClient( code: "", session: "" )
+
     @State private var secrets : Secrets = Secrets( clientId: "", redirectUrl: "" )
-    var body: some View {
+
+    init( schwabClient: SchwabClient )
+    {
+        self.schwabClient = schwabClient
+    }
+
+    var body: some View
+    {
         VStack
         {
             TextField( "Client Id", text: $secrets.clientId )
@@ -50,6 +59,8 @@ struct SecretsTestView: View
 
 }
 
-#Preview {
-    SecretsTestView()
+#Preview
+{
+    let schwabClient = SchwabClient( code: "", session: "" )
+    SecretsTestView( schwabClient : schwabClient )
 }
