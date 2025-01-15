@@ -55,10 +55,7 @@ struct QuotesTestView: View
 
 #Preview
 {
-    var schwabClient = SchwabClient(
-        accessToken: "",
-        session: ""
-    )
+    var schwabClient = SchwabClient( secrets: getSecretsFromFile() )
     QuotesTestView( schwabClient : schwabClient )
 }
 

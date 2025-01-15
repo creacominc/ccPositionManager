@@ -64,6 +64,7 @@ struct AuthorizeTestView: View
                 extractedSession = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
 
                 self.schwabClient.setAccessToken( accessToken: extractedAccessToken )
+                
                 self.schwabClient.setSession( session: extractedSession )
                 print( "accessToken: \(extractedAccessToken)" )
                 print( "session: \(extractedSession)" )
@@ -78,6 +79,6 @@ struct AuthorizeTestView: View
 
 #Preview
 {
-    let schwabClient = SchwabClient( accessToken: "", session: "" )
+    let schwabClient = SchwabClient( secrets: getSecretsFromFile() )
     AuthorizeTestView( schwabClient : schwabClient )
 }

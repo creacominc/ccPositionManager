@@ -36,7 +36,7 @@ struct TestUI: View
 
 #Preview
 {
-    let schwabClient = SchwabClient( accessToken: "", session: "" )
+    let schwabClient = SchwabClient( secrets: getSecretsFromFile() )
     TestUI( schwabClient : schwabClient )
 }
 

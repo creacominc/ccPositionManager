@@ -4,61 +4,90 @@ import AuthenticationServices
 
 class SchwabClient
 {
-    private let AUTORIZE_WEB : String = "https://api.schwabapi.com/v1/oauth/authorize"
-    private var secrets: Secrets = Secrets( clientId: "" , redirectUrl: "" )
-    private var accessToken: String = ""
-    private var session: String = ""
+    internal var secrets : Secrets
 
-    init( accessToken: String, session: String )
+    init( secrets: Secrets )
     {
-        self.accessToken = accessToken
-        self.session = session
-
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileURL = documentsDirectory.appendingPathComponent(".secrets.json")
-
-        let data = try? Data( contentsOf: fileURL )
-        
-        do {
-            self.secrets = try JSONDecoder().decode( Secrets.self, from: data!)
-            print( "secrets: \( self.secrets )" )
-        } catch {
-            print("Error decoding JSON: \(error)")
-        }
+        self.secrets = secrets
     }
-
-
-    func setAccessToken(accessToken: String)
-    {
-        self.accessToken = accessToken
-    }
-
-    func setSession(session: String)
-    {
-        self.session = session
-    }
-
-    func getAccessToken() -> String
-    {
-        return self.accessToken
-    }
-
-    func getSession() -> String
-    {
-        return self.session
-    }
-
 
     func authenticate(completion: @escaping (Result<URL, ErrorCodes>) -> Void)
     {
         // provide the URL for authentication.
-        let AUTHORIZE_URL : String  = "\(self.AUTORIZE_WEB)?response_type=code&client_id=\(self.secrets.clientId)&scope=readonly&redirect_uri=\(self.secrets.redirectUrl)"
+        let AUTHORIZE_URL : String  = "\(self.secrets.authorizationUrl)?client_id=\(self.secrets.appId)&redirect_uri=\(self.secrets.redirectUrl)"
         guard let url = URL( string: AUTHORIZE_URL ) else {
             completion(.failure(.invalidResponse))
             return
         }
         completion( .success( url ) )
         return
+    }
+
+    func setAccessToken(accessToken: String)
+    {
+        self.secrets.accessToken = accessToken
+
+        let url = URL( string: "\(self.secrets.accessTokenUrl)" )!
+        print( url )
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let authstring = "\(self.secrets.appId):\(self.secrets.appSecret)"
+        let authData = authstring.data(using: .utf8)!
+        let authStringEncoded = authData.base64EncodedString()
+        request.setValue("Basic \(authStringEncoded)", forHTTPHeaderField: "Authorization")
+        request.setValue( "application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type" )
+        let bodyData = "grant_type=authorization_code&code=\(accessToken)&redirect_uri=\(self.secrets.redirectUrl)" // .data(using: .utf8)!
+        request.httpBody = bodyData.data(using: .utf8)!
+        print( "Posting access token request" )
+        self.performRequest(request)
+        { (result : Result< String, ErrorCodes>) in
+            switch result
+            {
+            case .success( let tokenSet ):
+                print( "token set" )
+                print( tokenSet )
+            case .failure(let error):
+                print("Token set failed: \(error)")
+                print( error.localizedDescription )
+            }
+
+        }
+    }
+
+    /**
+
+
+     response = requests.post( 'https://api.schwabapi.com/v1/oauth/token', headers=headers, data=data )
+     print( response.ok )
+     print( response.json() )
+
+     tokenDict = response.json()
+     access_token = tokenDict['access_token']
+     refresh_token = tokenDict['refresh_token']
+
+     base_url = "https://api.schwabapi.com/trader/v1/"
+
+     response = requests.get( f'{base_url}/accounts/accountNumbers', headers={ 'Authorization': f'Bearer {access_token}' } )
+
+     print( response.ok )
+
+     print( response.json() )
+
+     */
+
+    func setSession(session: String)
+    {
+        self.secrets.session = session
+    }
+
+    func getAccessToken() -> String
+    {
+        return self.secrets.accessToken
+    }
+
+    func getSession() -> String
+    {
+        return self.secrets.session
     }
 
 
@@ -110,13 +139,7 @@ class SchwabClient
     func getQuotes(symbolId: String, completion: @escaping (Result<QuotesResponse, ErrorCodes>) -> Void)
     {
         /**
-         curl -X 'GET' \
-           'https://api.schwabapi.com/marketdata/v1/quotes?symbols=RY&indicative=false' \
-           -H 'accept: application/json' \
-           -H 'Authorization: Bearer I0.b2F1dGgyLmNkYy5zY2h3YWIuY29t.mYmRJoFgxpBZAPPWHcJpzmJH5wlW1DItYhe_mGtk5A0@'
 
-         https://api.schwabapi.com/marketdata/v1/quotes?symbols=AAPL&indicative=false
-         https://api.schwabapi.com/marketdata/v1/quotes?symbols=NVDA&indicative=false
          */
         let urlString : String = "https://api.schwabapi.com/marketdata/v1/quotes?symbols=\(symbolId)&indicative=false"
         guard let url = URL( string: urlString ) else {
@@ -125,13 +148,12 @@ class SchwabClient
         }
         print( url )
 
-
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue( "application/json", forHTTPHeaderField: "accept" )
+        request.setValue("Bearer \(self.secrets.accessToken.data(using: .utf8)?.base64EncodedString() ?? ""  )", forHTTPHeaderField: "Authorization")
+        //request.setValue( "application/json", forHTTPHeaderField: "accept" )
 
-        print( "Bearer \(self.accessToken)" )
+        print( "Bearer \(self.secrets.accessToken)" )
 
         self.performRequest(request, completion: completion)
 
@@ -221,8 +243,9 @@ class SchwabClient
     {
         URLSession.shared.dataTask(with: request)
         { data, response, error in
-
             print( "\n\n RESPONSE:  \(response.debugDescription) \n\n" )
+            print( "Data = \(String(describing: data?.base64EncodedString()))" )
+            print( "Error = \(String(describing: error))" )
 
             if let error = error
             {

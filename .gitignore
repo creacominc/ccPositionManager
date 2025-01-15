@@ -6,6 +6,8 @@
 *~
 *.log
 
+*.secrets.log
+
 ## User settings
 xcuserdata/
 
