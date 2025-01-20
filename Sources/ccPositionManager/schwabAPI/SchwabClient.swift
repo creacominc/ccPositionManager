@@ -145,10 +145,10 @@ class SchwabClient
  */
 
                 }
-                catch
-                {
-                    print( "error: \(error.localizedDescription)" )
-                }
+//                catch
+//                {
+//                    print( "error: \(error.localizedDescription)" )
+//                }
 
 //                if let accountDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
 //                   let accounts = accountDict["accounts"] as? [String]
