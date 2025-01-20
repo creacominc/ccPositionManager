@@ -116,9 +116,11 @@ class SchwabClient
                     do
                     {
                         let accountNumbers = try decoder.decode([SchwabAccounts].self, from: data)
-                        print( "Account Number: \(accountNumbers[0].accountNumber.suffix( 5 ))" )
+                        let suffix0 : String = String( accountNumbers[0].accountNumber.suffix( 3 ) )
+                        print( "Account ending in: \(suffix0)" )
 //                        print( "Hash: \(accountNumbers[0].hashValue)" )
-                        print( "Account Number: \(accountNumbers[1].accountNumber.suffix( 5 ))" )
+                        let suffix1 : String = String( accountNumbers[1].accountNumber.suffix( 3 ) )
+                        print( "Account ending in: \(suffix1)" )
 //                        print( "Hash: \(accountNumbers[1].hashValue)" )
                         DispatchQueue.main.async
                         {
