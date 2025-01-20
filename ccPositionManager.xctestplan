@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "B13B2E22-9205-4F33-AD11-308D501B3BC7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ccPositionManager.xcodeproj",
+      "identifier" : "3688183D2D17924500BA57F4",
+      "name" : "ccPositionManager"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ccPositionManager.xcodeproj",
+        "identifier" : "365D31EB2D3EB9A4001B7F37",
+        "name" : "ccPositionManagerUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

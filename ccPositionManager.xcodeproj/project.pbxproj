@@ -11,8 +11,19 @@
 		36E3E07A2D32DEEB002A2F8B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3E0752D32DEEB002A2F8B /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		365D31F02D3EB9A4001B7F37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 368818362D17924400BA57F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3688183D2D17924500BA57F4;
+			remoteInfo = ccPositionManager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		364D704C2D2A2EF700577390 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		365D31EC2D3EB9A4001B7F37 /* ccPositionManagerUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3688183E2D17924500BA57F4 /* ccPositionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccPositionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ccPositionManager.swift; sourceTree = "<group>"; };
 		36E3E0752D32DEEB002A2F8B /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -42,6 +53,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		365D31E92D3EB9A4001B7F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3688183B2D17924500BA57F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				3688183E2D17924500BA57F4 /* ccPositionManager.app */,
+				365D31EC2D3EB9A4001B7F37 /* ccPositionManagerUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +112,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		365D31EB2D3EB9A4001B7F37 /* ccPositionManagerUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 365D31F42D3EB9A4001B7F37 /* Build configuration list for PBXNativeTarget "ccPositionManagerUnitTests" */;
+			buildPhases = (
+				365D31E82D3EB9A4001B7F37 /* Sources */,
+				365D31E92D3EB9A4001B7F37 /* Frameworks */,
+				365D31EA2D3EB9A4001B7F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				365D31F12D3EB9A4001B7F37 /* PBXTargetDependency */,
+			);
+			name = ccPositionManagerUnitTests;
+			packageProductDependencies = (
+			);
+			productName = ccPositionManagerUnitTests;
+			productReference = 365D31EC2D3EB9A4001B7F37 /* ccPositionManagerUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3688183D2D17924500BA57F4 /* ccPositionManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 368818652D17924600BA57F4 /* Build configuration list for PBXNativeTarget "ccPositionManager" */;
@@ -128,6 +167,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					365D31EB2D3EB9A4001B7F37 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 3688183D2D17924500BA57F4;
+					};
 					3688183D2D17924500BA57F4 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -148,11 +191,19 @@
 			projectRoot = "";
 			targets = (
 				3688183D2D17924500BA57F4 /* ccPositionManager */,
+				365D31EB2D3EB9A4001B7F37 /* ccPositionManagerUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		365D31EA2D3EB9A4001B7F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3688183C2D17924500BA57F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +214,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		365D31E82D3EB9A4001B7F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3688183A2D17924500BA57F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,7 +232,54 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		365D31F12D3EB9A4001B7F37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3688183D2D17924500BA57F4 /* ccPositionManager */;
+			targetProxy = 365D31F02D3EB9A4001B7F37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		365D31F22D3EB9A4001B7F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ccPositionManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ccPositionManager";
+			};
+			name = Debug;
+		};
+		365D31F32D3EB9A4001B7F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ccPositionManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ccPositionManager";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		368818632D17924600BA57F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -368,6 +473,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		365D31F42D3EB9A4001B7F37 /* Build configuration list for PBXNativeTarget "ccPositionManagerUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				365D31F22D3EB9A4001B7F37 /* Debug */,
+				365D31F32D3EB9A4001B7F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		368818392D17924400BA57F4 /* Build configuration list for PBXProject "ccPositionManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "8050A9E6-9D41-4B0C-9EB8-786C40AC1DD2",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ccPositionManager.xcodeproj",
+        "identifier" : "365D31EB2D3EB9A4001B7F37",
+        "name" : "ccPositionManagerUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}
