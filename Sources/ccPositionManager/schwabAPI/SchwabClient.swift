@@ -116,11 +116,9 @@ class SchwabClient
                     do
                     {
                         let accountNumbers = try decoder.decode([SchwabAccounts].self, from: data)
-                        let accountNumberLen = accountNumbers[0].accountNumber.count
-                        print( "Account Number: \(accountNumbers[0].accountNumber[..<accountNumberLen-5])" )
+                        print( "Account Number: \(accountNumbers[0].accountNumber.suffix( 5 ))" )
 //                        print( "Hash: \(accountNumbers[0].hashValue)" )
-                        accountNumberLen = accountNumbers[1].accountNumber.count
-                        print( "Account Number: \(accountNumbers[1].accountNumber[..<accountNumberLen-5])" )
+                        print( "Account Number: \(accountNumbers[1].accountNumber.suffix( 5 ))" )
 //                        print( "Hash: \(accountNumbers[1].hashValue)" )
                         DispatchQueue.main.async
                         {

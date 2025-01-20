@@ -46,9 +46,7 @@ struct ccPositionManagerApp: App
     {
         WindowGroup
         {
-            //ContentView( schwabClient: schwabClient )
-            CopilotTestView( )
-
+            ContentView( schwabClient: schwabClient )
         }
         .modelContainer( for: Position.self )
     }
