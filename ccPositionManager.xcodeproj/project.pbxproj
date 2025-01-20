@@ -7,37 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3679CCFB2D3EAC940034B6DC /* TestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */; };
 		36DADAE72D2A37EE009C4E5D /* ccPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */; };
-		36DADAEB2D2A3805009C4E5D /* ccPositionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */; };
 		36E3E07A2D32DEEB002A2F8B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3E0752D32DEEB002A2F8B /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		368818522D17924600BA57F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 368818362D17924400BA57F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3688183D2D17924500BA57F4;
-			remoteInfo = ccPositionManager;
-		};
-		3688185C2D17924600BA57F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 368818362D17924400BA57F4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3688183D2D17924500BA57F4;
-			remoteInfo = ccPositionManager;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		364D704C2D2A2EF700577390 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
-		3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		3688183E2D17924500BA57F4 /* ccPositionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccPositionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ccPositionManager.swift; sourceTree = "<group>"; };
-		36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ccPositionManagerTests.swift; sourceTree = "<group>"; };
 		36E3E0752D32DEEB002A2F8B /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,11 +27,6 @@
 		368818402D17924500BA57F4 /* ccPositionManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ccPositionManager;
-			sourceTree = "<group>";
-		};
-		3688185E2D17924600BA57F4 /* ccPositionManagerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ccPositionManagerUITests;
 			sourceTree = "<group>";
 		};
 		36DADAF02D2A381D009C4E5D /* Models */ = {
@@ -77,28 +49,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3688184E2D17924600BA57F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		368818582D17924600BA57F4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		368818352D17924400BA57F4 = {
 			isa = PBXGroup;
 			children = (
-				3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */,
-				36DADAEA2D2A3805009C4E5D /* Tests */,
 				36DADAE62D2A37EE009C4E5D /* Sources */,
 				364D704C2D2A2EF700577390 /* README.md */,
 				368818402D17924500BA57F4 /* ccPositionManager */,
@@ -110,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				3688183E2D17924500BA57F4 /* ccPositionManager.app */,
-				368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */,
-				3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,15 +88,6 @@
 				36DADAE52D2A37EE009C4E5D /* ccPositionManager */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		36DADAEA2D2A3805009C4E5D /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */,
-				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,49 +118,6 @@
 			productReference = 3688183E2D17924500BA57F4 /* ccPositionManager.app */;
 			productType = "com.apple.product-type.application";
 		};
-		368818502D17924600BA57F4 /* ccPositionManagerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 368818682D17924600BA57F4 /* Build configuration list for PBXNativeTarget "ccPositionManagerTests" */;
-			buildPhases = (
-				3688184D2D17924600BA57F4 /* Sources */,
-				3688184E2D17924600BA57F4 /* Frameworks */,
-				3688184F2D17924600BA57F4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				368818532D17924600BA57F4 /* PBXTargetDependency */,
-			);
-			name = ccPositionManagerTests;
-			packageProductDependencies = (
-			);
-			productName = ccPositionManagerTests;
-			productReference = 368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3688185A2D17924600BA57F4 /* ccPositionManagerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3688186B2D17924600BA57F4 /* Build configuration list for PBXNativeTarget "ccPositionManagerUITests" */;
-			buildPhases = (
-				368818572D17924600BA57F4 /* Sources */,
-				368818582D17924600BA57F4 /* Frameworks */,
-				368818592D17924600BA57F4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3688185D2D17924600BA57F4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
-			);
-			name = ccPositionManagerUITests;
-			packageProductDependencies = (
-			);
-			productName = ccPositionManagerUITests;
-			productReference = 3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,14 +130,6 @@
 				TargetAttributes = {
 					3688183D2D17924500BA57F4 = {
 						CreatedOnToolsVersion = 16.2;
-					};
-					368818502D17924600BA57F4 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 3688183D2D17924500BA57F4;
-					};
-					3688185A2D17924600BA57F4 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 3688183D2D17924500BA57F4;
 					};
 				};
 			};
@@ -254,29 +148,12 @@
 			projectRoot = "";
 			targets = (
 				3688183D2D17924500BA57F4 /* ccPositionManager */,
-				368818502D17924600BA57F4 /* ccPositionManagerTests */,
-				3688185A2D17924600BA57F4 /* ccPositionManagerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3688183C2D17924500BA57F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3679CCFB2D3EAC940034B6DC /* TestPlan.xctestplan in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3688184F2D17924600BA57F4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		368818592D17924600BA57F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,35 +172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3688184D2D17924600BA57F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				36DADAEB2D2A3805009C4E5D /* ccPositionManagerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		368818572D17924600BA57F4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		368818532D17924600BA57F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3688183D2D17924500BA57F4 /* ccPositionManager */;
-			targetProxy = 368818522D17924600BA57F4 /* PBXContainerItemProxy */;
-		};
-		3688185D2D17924600BA57F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3688183D2D17924500BA57F4 /* ccPositionManager */;
-			targetProxy = 3688185C2D17924600BA57F4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		368818632D17924600BA57F4 /* Debug */ = {
@@ -516,92 +365,6 @@
 			};
 			name = Release;
 		};
-		368818692D17924600BA57F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ccPositionManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ccPositionManager";
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Debug;
-		};
-		3688186A2D17924600BA57F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ccPositionManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ccPositionManager";
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Release;
-		};
-		3688186C2D17924600BA57F4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = ccPositionManager;
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Debug;
-		};
-		3688186D2D17924600BA57F4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = creacominc.ccPositionManagerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = ccPositionManager;
-				XROS_DEPLOYMENT_TARGET = 2.2;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -619,24 +382,6 @@
 			buildConfigurations = (
 				368818662D17924600BA57F4 /* Debug */,
 				368818672D17924600BA57F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		368818682D17924600BA57F4 /* Build configuration list for PBXNativeTarget "ccPositionManagerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				368818692D17924600BA57F4 /* Debug */,
-				3688186A2D17924600BA57F4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3688186B2D17924600BA57F4 /* Build configuration list for PBXNativeTarget "ccPositionManagerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3688186C2D17924600BA57F4 /* Debug */,
-				3688186D2D17924600BA57F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

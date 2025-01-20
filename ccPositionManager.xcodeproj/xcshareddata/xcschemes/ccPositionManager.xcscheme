@@ -27,13 +27,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:TestPlan.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -46,7 +41,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3688185A2D17924600BA57F4"
@@ -60,6 +55,9 @@
                </Test>
                <Test
                   Identifier = "ccPositionManagerUITests/testLaunchPerformance()">
+               </Test>
+               <Test
+                  Identifier = "ccPositionManagerUITestsLaunchTests/testLaunch()">
                </Test>
             </SelectedTests>
          </TestableReference>
