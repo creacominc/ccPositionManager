@@ -46,8 +46,8 @@ class SchwabClient
         self.secrets.code = queryItems?.first(where: { $0.name == "code" })?.value ?? ""
         self.secrets.session = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
 
-        print( "code: \(self.secrets.code)" )
-        print( "session: \(self.secrets.session)" )
+//        print( "code: \(self.secrets.code)" )
+//        print( "session: \(self.secrets.session)" )
 
         // Access Token Request
         let url = URL( string: "\(self.secrets.accessTokenUrl)" )!
