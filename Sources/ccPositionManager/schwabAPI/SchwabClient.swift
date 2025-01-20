@@ -74,8 +74,8 @@ class SchwabClient
                 {
                     self.secrets.accessToken = tokenDict["access_token"] as? String ?? ""
                     self.secrets.refreshToken = tokenDict["refresh_token"] as? String ?? ""
-                    print( "AccessToken = \(self.secrets.accessToken)" )
-                    print( "RefreshToken = \(self.secrets.refreshToken)" )
+//                    print( "AccessToken = \(self.secrets.accessToken)" )
+//                    print( "RefreshToken = \(self.secrets.refreshToken)" )
                     self.fetchAccountNumbers()
                 } else {
                     print( "Failed to parse token response" )
@@ -95,7 +95,7 @@ class SchwabClient
         print( "In fetchAccountNumbers" )
         var request = URLRequest(url: URL(string: "https://api.schwabapi.com/trader/v1/accounts/accountNumbers")!)
         request.setValue("Bearer \(self.secrets.accessToken)", forHTTPHeaderField: "Authorization")
-        print( "AccessToken: \(self.secrets.accessToken)" )
+//        print( "AccessToken: \(self.secrets.accessToken)" )
         URLSession.shared.dataTask(with: request)
         { data, response, error in
             guard let data = data, error == nil else
