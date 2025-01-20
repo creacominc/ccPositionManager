@@ -134,18 +134,10 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		36DADAE92D2A3805009C4E5D /* ccPositionManagerTests */ = {
-			isa = PBXGroup;
-			children = (
-				36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */,
-			);
-			path = ccPositionManagerTests;
-			sourceTree = "<group>";
-		};
 		36DADAEA2D2A3805009C4E5D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				36DADAE92D2A3805009C4E5D /* ccPositionManagerTests */,
+				36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
