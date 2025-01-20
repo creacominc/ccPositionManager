@@ -51,7 +51,7 @@ class SchwabClient
 
         // Access Token Request
         let url = URL( string: "\(self.secrets.accessTokenUrl)" )!
-        print( "accessTokenUrl: \(url)" )
+//        print( "accessTokenUrl: \(url)" )
         var accessTokenRequest = URLRequest( url: url )
         accessTokenRequest.httpMethod = "POST"
         // headers
@@ -117,9 +117,9 @@ class SchwabClient
                     {
                         let accountNumbers = try decoder.decode([SchwabAccounts].self, from: data)
                         print( "Account Number: \(accountNumbers[0].accountNumber)" )
-                        print( "Hash: \(accountNumbers[0].hashValue)" )
+//                        print( "Hash: \(accountNumbers[0].hashValue)" )
                         print( "Account Number: \(accountNumbers[1].accountNumber)" )
-                        print( "Hash: \(accountNumbers[1].hashValue)" )
+//                        print( "Hash: \(accountNumbers[1].hashValue)" )
                         DispatchQueue.main.async
                         {
                             self.secrets.accountNumbers = [accountNumbers[0].accountNumber, accountNumbers[1].accountNumber]
