@@ -2,8 +2,7 @@
 Position Manager App for OSX and IOS
 [![Swift](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml/badge.svg)](https://github.com/creacominc/ccPositionManager/actions/workflows/swift.yml)
 
-
-See:  https://developer.apple.com/tutorials/develop-in-swift/save-data
+NOTE:  This is a Work-In-Progress.  See the Progress section for the current status and what needs to be done.
 
 Workflows:
 - Buy Side:  which securities should be bought now based on rules;
@@ -27,3 +26,10 @@ Views:
 - Securities List View:  A list of the securities for the select workflow.  This list may be limited by the Needs Attention Only Toggle.  The securities can be clicked on to get the relevant information in the detail view.
 
 
+Progress:
+    Done:
+        - Experimented with the OATH connection.  A 'TestViews' folder contains views used to test aspects of the program.  The SecretsTestView and AuthroizeTestView (combined into TestUI) demonstrate the saving and load of Secrets and the process of Authorizing and acquiring an Access Token (and proving it with fetching the account numbers).  
+        - Using the AuthorizeTestView demonstrates everything up to getting the account numbers.
+    ToDo:
+        - Aquire the account information;
+        - Aquire a list of positions in available accounts;
