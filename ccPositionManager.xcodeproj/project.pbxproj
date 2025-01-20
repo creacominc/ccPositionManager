@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3679CCFB2D3EAC940034B6DC /* TestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */; };
 		36DADAE72D2A37EE009C4E5D /* ccPositionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE42D2A37EE009C4E5D /* ccPositionManager.swift */; };
 		36DADAEB2D2A3805009C4E5D /* ccPositionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */; };
 		36E3E07A2D32DEEB002A2F8B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3E0752D32DEEB002A2F8B /* Secrets.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		364D704C2D2A2EF700577390 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		3688183E2D17924500BA57F4 /* ccPositionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccPositionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		368818512D17924600BA57F4 /* ccPositionManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3688185B2D17924600BA57F4 /* ccPositionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ccPositionManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,11 +97,11 @@
 		368818352D17924400BA57F4 = {
 			isa = PBXGroup;
 			children = (
+				3679CCFA2D3EAC940034B6DC /* TestPlan.xctestplan */,
 				36DADAEA2D2A3805009C4E5D /* Tests */,
 				36DADAE62D2A37EE009C4E5D /* Sources */,
 				364D704C2D2A2EF700577390 /* README.md */,
 				368818402D17924500BA57F4 /* ccPositionManager */,
-				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
 				3688183F2D17924500BA57F4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				36DADAE82D2A3805009C4E5D /* ccPositionManagerTests.swift */,
+				3688185E2D17924600BA57F4 /* ccPositionManagerUITests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3679CCFB2D3EAC940034B6DC /* TestPlan.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
