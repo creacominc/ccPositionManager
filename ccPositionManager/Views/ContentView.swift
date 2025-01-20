@@ -85,7 +85,7 @@ struct ContentView: View
         @Environment(\.openURL) var openURL
 
         testButtonTitle = "pressed"
-        schwabClient.authenticate
+        schwabClient.getAuthenticationUrl
         { (result : Result< URL, ErrorCodes>) in
 
             switch result

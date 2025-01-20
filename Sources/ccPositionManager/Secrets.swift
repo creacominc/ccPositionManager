@@ -20,6 +20,7 @@ struct Secrets: Codable
         session             = ""
         accessToken         = ""
         refreshToken        = ""
+        accountNumbers      = []
     }
 
     var authorizationUrl    : String
@@ -31,6 +32,7 @@ struct Secrets: Codable
     var session             : String
     var accessToken         : String
     var refreshToken        : String
+    var accountNumbers      : [String]
 }
 
 func getSecretsFromFile() -> Secrets
@@ -42,9 +44,9 @@ func getSecretsFromFile() -> Secrets
     var secrets : Secrets = Secrets()
     do {
         secrets = try JSONDecoder().decode( Secrets.self, from: data!)
-        print( "secrets: \(secrets)" )
+        //print( "secrets: \(secrets)" )
     } catch {
-        print("Error decoding JSON: \(error)")
+        print("getSecretsFromFile: Error decoding JSON: \(error)")
     }
     return secrets
 }

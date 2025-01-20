@@ -29,25 +29,25 @@ struct QuotesTestView: View
                 quotesButtonEnabled = !symbol.isEmpty
                 print("Search text changed to \(symbol)")
             })
-        Button( action: {
-            print("Search text with \(symbol)")
-            schwabClient.getQuotes( symbolId: symbol,
-                                 completion:
-            { result in
-                if case .success(let quotes) = result
-                {
-                    print("\n\nQuotes: \(quotes)\n")
-                }
-                else {
-                    print("\n\nError: \(result)\n")
-                }
-            }
-            )
-
-        }) {
-            Text("Search")
-        }
-        .disabled( !quotesButtonEnabled )
+//        Button( action: {
+//            print("Search text with \(symbol)")
+//            schwabClient.getQuotes( symbolId: symbol,
+//                                 completion:
+//            { result in
+//                if case .success(let quotes) = result
+//                {
+//                    print("\n\nQuotes: \(quotes)\n")
+//                }
+//                else {
+//                    print("\n\nError: \(result)\n")
+//                }
+//            }
+//            )
+//
+//        }) {
+//            Text("Search")
+//        }
+//        .disabled( !quotesButtonEnabled )
 
 
     }

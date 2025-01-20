@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestUI: View
 {
-    private var schwabClient: SchwabClient
+    @State private var schwabClient: SchwabClient
 
     init( schwabClient: SchwabClient )
     {

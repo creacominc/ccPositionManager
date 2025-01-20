@@ -15,8 +15,7 @@ struct AuthorizeTestView: View
     @State private var authenticateButtonUrl: URL = URL( string: "https://localhost" )!
     @State private var authenticateButtonEnabled: Bool = false
     @State private var authenticateButtonTitle: String = "Click to Authorize"
-    @State private var extractedAccessToken: String = ""
-    @State private var extractedSession: String = ""
+    @State private var nextButtonEnabled: Bool = false
 
     init( schwabClient: SchwabClient )
     {
@@ -28,50 +27,50 @@ struct AuthorizeTestView: View
 
         VStack
         {
-            Link( authenticateButtonTitle, destination: authenticateButtonUrl )
+            Link( authenticateButtonTitle
+                  , destination: URL( string: self.schwabClient.secrets.authorizationUrl )! )
             .disabled( !authenticateButtonEnabled )
             .opacity( !authenticateButtonEnabled ? 0 : 1 )
             .onAppear
             {
-                schwabClient.authenticate
+                self.schwabClient.getAuthenticationUrl
                 { (result : Result< URL, ErrorCodes>) in
 
                     switch result
                     {
                     case .success( let url ):
-                        print( "authenticated" )
-                        print( url )
+                        print( "Authentication URL: \(url)" )
                         authenticateButtonEnabled = true
-                        authenticateButtonUrl = url
+                        self.schwabClient.secrets.authorizationUrl = url.absoluteString
                     case .failure(let error):
                         print("Authentication failed: \(error)")
                     }
 
                 }
-
             }
 
-            TextField( "After authorization, paste URL here.", text: $resultantUrl
-            )
+            TextField( "After authorization, paste URL here.", text: $resultantUrl )
             .onChange( of: resultantUrl )
             {
-                print( "URL: \(self.resultantUrl)" )
-
-                let urlComponents = URLComponents(string: self.resultantUrl)!
-                let queryItems = urlComponents.queryItems
-                
-                extractedAccessToken = queryItems?.first(where: { $0.name == "code" })?.value ?? ""
-                extractedSession = queryItems?.first(where: { $0.name == "session" })?.value ?? ""
-
-                self.schwabClient.setAccessToken( accessToken: extractedAccessToken )
-                
-                self.schwabClient.setSession( session: extractedSession )
-                print( "accessToken: \(extractedAccessToken)" )
-                print( "session: \(extractedSession)" )
+                print( "OnChange URL: \( resultantUrl )" )
+                nextButtonEnabled = true
             }
-            Text( "Access Token: \(extractedAccessToken)" )
-            Text( "Session: \(extractedSession)")
 
+            Button( "Next" )
+            {
+                self.schwabClient.getAccessToken( from: resultantUrl )
+                { (result : Result< Void, ErrorCodes>) in
+                    switch result
+                    {
+                    case .success( ):
+                        print( "worked?" )
+                    case .failure(let error):
+                        print("Authenticate error: \(error)")
+                        print( error.localizedDescription )
+                    }
+                }
+            }
+            .disabled( !nextButtonEnabled )
         }
 
     }

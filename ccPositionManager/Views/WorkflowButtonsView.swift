@@ -35,9 +35,6 @@ struct WorkflowButtonsView: View
             }
             .pickerStyle( .segmented )
             .onAppear { selectedWorkflow = WorkflowEnum.allCases.first?.rawValue ?? "Sell" }
-            .onAppear {             print( WorkflowEnum.allCases ) }
-            .onAppear { print( pickerValues ) }
-            .onAppear { print( pickerValues.indices ) }
 
             Picker( "", selection: $selectedAccountName )
             {
