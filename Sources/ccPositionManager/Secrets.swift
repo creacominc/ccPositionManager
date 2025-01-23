@@ -21,6 +21,7 @@ struct Secrets: Codable
         accessToken         = ""
         refreshToken        = ""
         accountNumbers      = []
+        accountHashes       = []
     }
 
     var authorizationUrl    : String
@@ -33,6 +34,7 @@ struct Secrets: Codable
     var accessToken         : String
     var refreshToken        : String
     var accountNumbers      : [String]
+    var accountHashes       : [String]
 }
 
 func getSecretsFromFile() -> Secrets
