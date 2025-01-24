@@ -65,7 +65,6 @@ struct ContentView: View
                 }
                 .disabled( !testButtonEnabled )
 
-
                 Link( authenticateButtonTitle, destination: authenticateButtonUrl )
                     .disabled( !authenticateButtonEnabled )
                     .opacity( !authenticateButtonEnabled ? 0 : 1 )
